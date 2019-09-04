@@ -43,6 +43,11 @@ namespace Squidex.Areas.Api.Controllers.Schemas.Models
         public bool IsRequired { get; set; }
 
         /// <summary>
+        /// Url called to remotely validate the data by api.
+        /// </summary>
+        public string RemoteValidationUrl { get; set; }
+
+        /// <summary>
         /// Determines if the field should be displayed in lists.
         /// </summary>
         public bool IsListField { get; set; }

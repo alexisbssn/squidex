@@ -45,6 +45,11 @@ namespace Squidex.Domain.Apps.Core.ValidateContent
             }
 
             yield return new CollectionItemValidator(new ObjectValidator<IJsonValue>(nestedSchema, false, "field"));
+
+            if (!string.IsNullOrWhiteSpace(field.Properties.RemoteValidationUrl))
+            {
+                yield return new RemoteValidator(field.Properties.RemoteValidationUrl);
+            }
         }
 
         public IEnumerable<IValidator> Visit(IField<AssetsFieldProperties> field)
@@ -60,6 +65,11 @@ namespace Squidex.Domain.Apps.Core.ValidateContent
             }
 
             yield return new AssetsValidator(field.Properties);
+
+            if (!string.IsNullOrWhiteSpace(field.Properties.RemoteValidationUrl))
+            {
+                yield return new RemoteValidator(field.Properties.RemoteValidationUrl);
+            }
         }
 
         public IEnumerable<IValidator> Visit(IField<BooleanFieldProperties> field)
@@ -67,6 +77,11 @@ namespace Squidex.Domain.Apps.Core.ValidateContent
             if (field.Properties.IsRequired)
             {
                 yield return new RequiredValidator();
+            }
+
+            if (!string.IsNullOrWhiteSpace(field.Properties.RemoteValidationUrl))
+            {
+                yield return new RemoteValidator(field.Properties.RemoteValidationUrl);
             }
         }
 
@@ -81,6 +96,11 @@ namespace Squidex.Domain.Apps.Core.ValidateContent
             {
                 yield return new RangeValidator<Instant>(field.Properties.MinValue, field.Properties.MaxValue);
             }
+
+            if (!string.IsNullOrWhiteSpace(field.Properties.RemoteValidationUrl))
+            {
+                yield return new RemoteValidator(field.Properties.RemoteValidationUrl);
+            }
         }
 
         public IEnumerable<IValidator> Visit(IField<GeolocationFieldProperties> field)
@@ -89,6 +109,11 @@ namespace Squidex.Domain.Apps.Core.ValidateContent
             {
                 yield return new RequiredValidator();
             }
+
+            if (!string.IsNullOrWhiteSpace(field.Properties.RemoteValidationUrl))
+            {
+                yield return new RemoteValidator(field.Properties.RemoteValidationUrl);
+            }
         }
 
         public IEnumerable<IValidator> Visit(IField<JsonFieldProperties> field)
@@ -96,6 +121,11 @@ namespace Squidex.Domain.Apps.Core.ValidateContent
             if (field.Properties.IsRequired)
             {
                 yield return new RequiredValidator();
+            }
+
+            if (!string.IsNullOrWhiteSpace(field.Properties.RemoteValidationUrl))
+            {
+                yield return new RemoteValidator(field.Properties.RemoteValidationUrl);
             }
         }
 
@@ -120,6 +150,11 @@ namespace Squidex.Domain.Apps.Core.ValidateContent
             {
                 yield return new UniqueValidator();
             }
+
+            if (!string.IsNullOrWhiteSpace(field.Properties.RemoteValidationUrl))
+            {
+                yield return new RemoteValidator(field.Properties.RemoteValidationUrl);
+            }
         }
 
         public IEnumerable<IValidator> Visit(IField<ReferencesFieldProperties> field)
@@ -137,6 +172,11 @@ namespace Squidex.Domain.Apps.Core.ValidateContent
             if (field.Properties.SchemaId != Guid.Empty)
             {
                 yield return new ReferencesValidator(field.Properties.SchemaId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(field.Properties.RemoteValidationUrl))
+            {
+                yield return new RemoteValidator(field.Properties.RemoteValidationUrl);
             }
         }
 
@@ -166,6 +206,11 @@ namespace Squidex.Domain.Apps.Core.ValidateContent
             {
                 yield return new UniqueValidator();
             }
+
+            if (!string.IsNullOrWhiteSpace(field.Properties.RemoteValidationUrl))
+            {
+                yield return new RemoteValidator(field.Properties.RemoteValidationUrl);
+            }
         }
 
         public IEnumerable<IValidator> Visit(IField<TagsFieldProperties> field)
@@ -181,6 +226,11 @@ namespace Squidex.Domain.Apps.Core.ValidateContent
             }
 
             yield return new CollectionItemValidator(new RequiredStringValidator(true));
+
+            if (!string.IsNullOrWhiteSpace(field.Properties.RemoteValidationUrl))
+            {
+                yield return new RemoteValidator(field.Properties.RemoteValidationUrl);
+            }
         }
 
         public IEnumerable<IValidator> Visit(IField<UIFieldProperties> field)
@@ -188,6 +238,11 @@ namespace Squidex.Domain.Apps.Core.ValidateContent
             if (field is INestedField)
             {
                 yield return NoValueValidator.Instance;
+            }
+
+            if (!string.IsNullOrWhiteSpace(field.Properties.RemoteValidationUrl))
+            {
+                yield return new RemoteValidator(field.Properties.RemoteValidationUrl);
             }
         }
     }

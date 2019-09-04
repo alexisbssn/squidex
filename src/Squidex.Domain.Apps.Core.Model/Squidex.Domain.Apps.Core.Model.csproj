@@ -18,7 +18,7 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Squidex.Infrastructure\Squidex.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Squidex.Infrastructure.Shared\Squidex.Infrastructure.Shared.csproj" />
     <ProjectReference Include="..\Squidex.Shared\Squidex.Shared.csproj" />
   </ItemGroup>
   <PropertyGroup>

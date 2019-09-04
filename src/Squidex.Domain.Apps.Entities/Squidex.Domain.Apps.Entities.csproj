@@ -8,6 +8,7 @@
     <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Squidex.Domain.Apps.Entities.Commands\Squidex.Domain.Apps.Entities.Commands.csproj" />
     <ProjectReference Include="..\Squidex.Domain.Apps.Core.Model\Squidex.Domain.Apps.Core.Model.csproj" />
     <ProjectReference Include="..\Squidex.Domain.Apps.Core.Operations\Squidex.Domain.Apps.Core.Operations.csproj" />
     <ProjectReference Include="..\Squidex.Domain.Apps.Events\Squidex.Domain.Apps.Events.csproj" />
